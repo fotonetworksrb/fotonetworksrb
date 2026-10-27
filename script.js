@@ -145,50 +145,6 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const status = document.getElementById('formStatus');
-      const submitButton = form.querySelector('button[type="submit"]');
-      const originalButtonText = submitButton ? submitButton.textContent : '';
-      if (status) {
-        status.textContent = currentLang === 'sr' ? 'Šaljem upit…' : 'Sending your enquiry…';
-        status.classList.remove('is-error', 'is-success');
-      }
-      if (submitButton) submitButton.disabled = true;
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        let result = {};
-        try { result = await response.json(); } catch (_) {}
-        if (!response.ok || result.success === 'false' || result.success === false) {
-          throw new Error(result.message || 'Form submission failed');
-        }
-        if (status) {
-          status.textContent = currentLang === 'sr'
-            ? 'Upit je poslat! Hvala vam. Ako je ovo prvo slanje, proverite Gmail i potvrdite FormSubmit aktivaciju.'
-            : 'Enquiry sent! Thank you. If this is the first submission, check your inbox and confirm FormSubmit activation.';
-          status.classList.add('is-success');
-        }
-        form.reset();
-      } catch (error) {
-        if (status) {
-          status.textContent = currentLang === 'sr'
-            ? 'Slanje nije uspelo. Proverite internet vezu i da li ste potvrdili FormSubmit aktivaciju na fotonetworksrb@gmail.com. Ako sajt otvarate kao lokalni fajl, prvo ga postavite na hosting.'
-            : 'Sending failed. Check your internet connection and confirm FormSubmit activation for fotonetworksrb@gmail.com. If you opened the site as a local file, publish it to hosting first.';
-          status.classList.add('is-error');
-        }
-      } finally {
-        if (submitButton) submitButton.disabled = false;
-      }
-    });
-  }
-
   applyTheme('light');
   applyLanguage('sr');
 })();

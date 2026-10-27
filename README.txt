@@ -29,3 +29,5 @@ KONTAKT FORMA
 - Forma zahteva da sajt bude otvoren preko interneta/hostinga; lokalno otvaranje fajla nije pouzdan test slanja.
 - Google Fonts i fotografije zahtevaju internet konekciju.
 - Proveri prava korišćenja fotografija pre javnog objavljivanja.
+
+Kontakt forma je povezana na FormSubmit link: https://formsubmit.co/el/muwitu. Testiraj sa objavljenog sajta; proveri Gmail i Spam folder.
