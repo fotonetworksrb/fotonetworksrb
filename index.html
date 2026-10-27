@@ -109,14 +109,17 @@
           <div class="contact-method"><span class="method-icon">⌖</span><div><small data-i18n="locationLabel">LOKACIJA</small><span data-i18n="locationFull">Beograd i okolina · po dogovoru</span></div></div>
           <div class="social-row"><a href="#" id="instagramLink">Instagram ↗</a><a href="#" id="facebookLink">Facebook ↗</a></div>
         </div>
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/fotonetworksrb@gmail.com" method="POST" accept-charset="UTF-8">
+          <input type="hidden" name="_subject" value="Novi upit sa sajta FotoNetworkSrb">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-top"><strong data-i18n="formTitle">Pošaljite upit</strong><span data-i18n="requiredNote">Polja označena * su obavezna.</span></div>
           <div class="form-row"><label><span data-i18n="nameLabel">Ime i prezime *</span><input name="name" required autocomplete="name" placeholder="Vaše ime" data-i18n-placeholder="namePlaceholder"></label><label><span data-i18n="formPhone">Telefon *</span><input name="phone" required type="tel" autocomplete="tel" placeholder="+381 ..." data-i18n-placeholder="phonePlaceholder"></label></div>
           <div class="form-row"><label><span data-i18n="eventLabel">Vrsta događaja *</span><select name="event" required><option value="" data-i18n="selectEvent">Izaberite događaj</option><option value="wedding" data-i18n="weddings">Venčanje</option><option value="baptism" data-i18n="baptisms">Krštenje</option><option value="birthday" data-i18n="birthdays">Rođendan</option><option value="graduation" data-i18n="graduations">Matura</option><option value="newborn" data-i18n="newborns">Rođenje bebe</option><option value="family" data-i18n="familyEvents">Porodična proslava</option><option value="other" data-i18n="other">Drugo</option></select></label><label><span data-i18n="dateLabel">Datum događaja</span><input name="date" type="date"></label></div>
           <label><span data-i18n="eventLocation">Lokacija događaja</span><input name="location" placeholder="Grad, restoran ili sala" data-i18n-placeholder="locationPlaceholder"></label>
           <label><span data-i18n="messageLabel">Recite nam nešto više</span><textarea name="message" rows="4" placeholder="Trajanje, želje, posebni detalji..." data-i18n-placeholder="messagePlaceholder"></textarea></label>
-          <button class="button button-primary submit-button" type="submit"><span data-i18n="submitButton">Pripremi upit</span> <span>↗</span></button>
-          <p class="form-note" data-i18n="formNote">Klikom na dugme otvoriće se vaša e-mail aplikacija sa pripremljenim upitom. Za automatsko slanje potrebno je povezati formu sa servisom za e-mail.</p>
+          <button class="button button-primary submit-button" type="submit"><span data-i18n="submitButton">Pošalji upit</span> <span>↗</span></button>
+          <p class="form-note" data-i18n="formNote">Popunite obavezna polja i kliknite „Pošalji upit“. Status slanja će se prikazati ovde.</p>
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
       </div>
