@@ -1,6 +1,6 @@
 (() => {
  const login=document.getElementById('login'), loginForm=document.getElementById('loginForm'), loginMessage=document.getElementById('loginMessage'), adminContent=document.getElementById('adminContent'), password=document.getElementById('password');
- const API='/api';
+ const API='https://fotonetworksrb-admin.fotonetworksrb.workers.dev/api';
  loginForm.addEventListener('submit',async e=>{
   e.preventDefault(); loginMessage.textContent='Proveravam šifru…';
   try {
