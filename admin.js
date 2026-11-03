@@ -1,4 +1,19 @@
 (() => {
+ const login=document.getElementById('login'), loginForm=document.getElementById('loginForm'), loginMessage=document.getElementById('loginMessage'), adminContent=document.getElementById('adminContent'), password=document.getElementById('password');
+ const API='/api';
+ loginForm.addEventListener('submit',async e=>{
+  e.preventDefault(); loginMessage.textContent='Proveravam šifru…';
+  try {
+   const response=await fetch(API+'/login',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:password.value})});
+   const data=await response.json().catch(()=>({}));
+   if(!response.ok) throw new Error(data.error||'Prijava nije uspela.');
+   login.hidden=true; adminContent.hidden=false; loginMessage.textContent=''; password.value='';
+  } catch(err) { loginMessage.textContent=err.message==='Failed to fetch'?'Serverska prijava još nije povezana. Potrebno je podesiti Worker.':err.message; }
+ });
+ document.getElementById('logout').addEventListener('click',async()=>{
+  try{await fetch(API+'/logout',{method:'POST',credentials:'include'});}catch(e){}
+  adminContent.hidden=true;login.hidden=false;password.value='';
+ });
  const picker=document.getElementById('files'), add=document.getElementById('add'), clear=document.getElementById('clear');
  const selection=document.getElementById('selection'), gallery=document.getElementById('gallery'), count=document.getElementById('count'), category=document.getElementById('category');
  let pending=[], photos=[];
@@ -10,7 +25,7 @@
  });
  add.addEventListener('click',()=>{
   pending.forEach(file=>photos.push({id:crypto.randomUUID(),file,url:URL.createObjectURL(file),category:category.value}));
-  pending=[];picker.value='';add.disabled=true;selection.textContent='Fotografije su dodate u privremeni pregled.';
+  pending=[];picker.value='';add.disabled=true;selection.textContent='Fotografije su dodate u privremeni pregled, nisu sačuvane na serveru.';
   render();
  });
  clear.addEventListener('click',()=>{pending=[];picker.value='';add.disabled=true;selection.textContent='Izbor je očišćen.';});
