@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FotoNetworkSrb | Admin panel</title>
+<style>
+:root{--blue:#1746a2;--blue2:#2563eb;--bg:#f3f6fc;--card:#fff;--text:#172033;--muted:#64748b;--line:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,Arial,sans-serif}
+header{background:linear-gradient(120deg,#102d70,#1d4ed8);color:#fff;padding:24px clamp(18px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:800;font-size:20px;letter-spacing:.2px}.brand span{display:block;font-size:12px;font-weight:500;opacity:.8;letter-spacing:1.5px;text-transform:uppercase}
+header a{color:#fff;text-decoration:none;border:1px solid #ffffff70;padding:9px 13px;border-radius:9px;font-size:13px}
+main{max-width:1120px;margin:34px auto;padding:0 18px}.intro{margin-bottom:24px}.intro h1{font-size:clamp(25px,4vw,34px);margin:0 0 5px}.intro p{margin:0;color:var(--muted)}
+.notice{background:#fff8e7;border:1px solid #f5d58b;color:#76520b;padding:13px 16px;border-radius:12px;margin:20px 0 24px;font-size:13px}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:22px;align-items:start}.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 22px #1e3a8a0a}.panel h2{font-size:17px;margin:0 0 16px}
+label{display:block;font-weight:650;font-size:13px;margin:14px 0 7px}select,input[type=text]{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;background:white;font:inherit;color:var(--text)}
+.drop{border:2px dashed #9bb4e8;background:#f7f9ff;border-radius:13px;padding:25px 14px;text-align:center;margin:12px 0;cursor:pointer}.drop strong{display:block;color:var(--blue);margin-bottom:5px}.drop small{color:var(--muted)}
+input[type=file]{display:none}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:9px;padding:11px 15px;background:var(--blue2);color:white;font-weight:700;cursor:pointer;font:inherit}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.secondary{background:#eaf0ff;color:#1746a2}.btn.danger{background:#fff0f0;color:#b42318;padding:7px 10px;font-size:12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.hint{font-size:12px;color:var(--muted);margin-top:12px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.toolbar h2{margin:0}.count{font-size:12px;color:var(--muted);background:#f1f5f9;padding:5px 9px;border-radius:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:13px}.empty{border:1px dashed #cbd5e1;border-radius:12px;padding:36px 16px;text-align:center;color:var(--muted);grid-column:1/-1}
+.photo{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:white}.photo img{display:block;width:100%;height:145px;object-fit:cover;background:#eef2f7}.photo-info{padding:10px}.photo-name{font-size:12px;font-weight:650;overflow-wrap:anywhere}.photo-cat{font-size:11px;color:var(--muted);margin:3px 0 9px}.photo-foot{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:760px){.layout{grid-template-columns:1fr}header{align-items:flex-start}main{margin:22px auto}}
+</style>
+</head>
+<body>
+<header><div class="brand">FotoNetworkSrb<span>Administracija galerije</span></div><a href="index.html">← Nazad na sajt</a></header>
+<main>
+<section class="intro"><h1>Upravljanje fotografijama</h1><p>Dodaj fotografije sa računara i rasporedi ih po galerijama.</p></section>
+<div class="notice"><strong>Probna verzija panela:</strong> trenutno fotografije služe samo za pregled u ovom prozoru. Još se ne čuvaju trajno niti su vidljive posetiocima sajta. Povezivanje trajnog čuvanja i zaštite pristupom dodajemo u sledećem koraku.</div>
+<div class="layout">
+<section class="panel">
+<h2>Dodaj fotografije</h2>
+<label for="category">Kategorija</label>
+<select id="category"><option>Venčanja</option><option>Krštenja</option><option>Rođendani</option><option>Proslave</option><option>Mature</option><option>Novorođenčad</option><option>Ostalo</option></select>
+<label>Izaberi slike sa računara</label>
+<label class="drop" for="files"><strong>＋ Izaberi fotografije</strong><small>JPG, PNG ili WEBP · možeš izabrati više slika</small></label>
+<input id="files" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple>
+<div class="actions"><button class="btn" id="add" disabled>Dodaj u pregled</button><button class="btn secondary" id="clear" type="button">Očisti izbor</button></div>
+<p class="hint" id="selection">Nijedna fotografija nije izabrana.</p>
+</section>
+<section class="panel">
+<div class="toolbar"><h2>Izabrane fotografije</h2><span class="count" id="count">0 fotografija</span></div>
+<div class="grid" id="gallery"><div class="empty">Još nema fotografija.<br>Izaberi slike sa računara da bi se prikazale ovde.</div></div>
+</section>
+</div>
+</main>
+<script src="admin.js"></script>
+</body></html>
