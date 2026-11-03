@@ -26,8 +26,13 @@ input[type=file]{display:none}.btn{display:inline-flex;align-items:center;justif
 <body>
 <header><div class="brand">FotoNetworkSrb<span>Administracija galerije</span></div><a href="index.html">← Nazad na sajt</a></header>
 <main>
+<section id="login" class="panel" style="max-width:420px;margin:45px auto">
+<h1 style="margin:0 0 8px">Prijava urednika</h1><p style="color:#64748b;margin:0 0 18px">Unesi administratorsku šifru za pristup galeriji.</p>
+<form id="loginForm"><label for="password">Šifra</label><input id="password" type="password" autocomplete="current-password" required style="width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit"><button class="btn" type="submit" style="width:100%;margin-top:14px">Prijavi se</button><p id="loginMessage" class="hint" role="alert"></p></form>
+</section>
+<div id="adminContent" hidden>
 <section class="intro"><h1>Upravljanje fotografijama</h1><p>Dodaj fotografije sa računara i rasporedi ih po galerijama.</p></section>
-<div class="notice"><strong>Probna verzija panela:</strong> trenutno fotografije služe samo za pregled u ovom prozoru. Još se ne čuvaju trajno niti su vidljive posetiocima sajta. Povezivanje trajnog čuvanja i zaštite pristupom dodajemo u sledećem koraku.</div>
+<div class="notice"><strong>Napomena:</strong> prijava će raditi tek kada povežemo serverski API. Sam ekran za šifru nije zaštita dok server ne proverava šifru.</div>
 <div class="layout">
 <section class="panel">
 <h2>Dodaj fotografije</h2>
@@ -40,10 +45,11 @@ input[type=file]{display:none}.btn{display:inline-flex;align-items:center;justif
 <p class="hint" id="selection">Nijedna fotografija nije izabrana.</p>
 </section>
 <section class="panel">
-<div class="toolbar"><h2>Izabrane fotografije</h2><span class="count" id="count">0 fotografija</span></div>
+<div class="toolbar"><h2>Izabrane fotografije</h2><button class="btn secondary" id="logout" type="button">Odjavi se</button><span class="count" id="count">0 fotografija</span></div>
 <div class="grid" id="gallery"><div class="empty">Još nema fotografija.<br>Izaberi slike sa računara da bi se prikazale ovde.</div></div>
 </section>
 </div>
 </main>
+</div>
 <script src="admin.js"></script>
 </body></html>
